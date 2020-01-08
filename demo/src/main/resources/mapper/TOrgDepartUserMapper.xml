@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TOrgDepartUserMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.TOrgDepartUser">
+    <id column="guid" jdbcType="VARCHAR" property="guid" />
+    <result column="depart_id" jdbcType="VARCHAR" property="departId" />
+    <result column="depart_code" jdbcType="VARCHAR" property="departCode" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="leader_flag" jdbcType="VARCHAR" property="leaderFlag" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="modi_date" jdbcType="TIMESTAMP" property="modiDate" />
+    <result column="modi_person" jdbcType="VARCHAR" property="modiPerson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    guid, depart_id, depart_code, user_id, user_code, leader_flag, comments, create_date, 
+    create_person, modi_date, modi_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_org_depart_user
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_org_depart_user
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.TOrgDepartUser">
+    insert into t_org_depart_user (guid, depart_id, depart_code, 
+      user_id, user_code, leader_flag, 
+      comments, create_date, create_person, 
+      modi_date, modi_person)
+    values (#{guid,jdbcType=VARCHAR}, #{departId,jdbcType=VARCHAR}, #{departCode,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{leaderFlag,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, 
+      #{modiDate,jdbcType=TIMESTAMP}, #{modiPerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.TOrgDepartUser">
+    insert into t_org_depart_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        guid,
+      </if>
+      <if test="departId != null">
+        depart_id,
+      </if>
+      <if test="departCode != null">
+        depart_code,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="leaderFlag != null">
+        leader_flag,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="modiDate != null">
+        modi_date,
+      </if>
+      <if test="modiPerson != null">
+        modi_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="departId != null">
+        #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="departCode != null">
+        #{departCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFlag != null">
+        #{leaderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modiDate != null">
+        #{modiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiPerson != null">
+        #{modiPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.TOrgDepartUser">
+    update t_org_depart_user
+    <set>
+      <if test="departId != null">
+        depart_id = #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="departCode != null">
+        depart_code = #{departCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFlag != null">
+        leader_flag = #{leaderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modiDate != null">
+        modi_date = #{modiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiPerson != null">
+        modi_person = #{modiPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.TOrgDepartUser">
+    update t_org_depart_user
+    set depart_id = #{departId,jdbcType=VARCHAR},
+      depart_code = #{departCode,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_code = #{userCode,jdbcType=VARCHAR},
+      leader_flag = #{leaderFlag,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      modi_date = #{modiDate,jdbcType=TIMESTAMP},
+      modi_person = #{modiPerson,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.TOrgDepartUser">
+    <id column="guid" jdbcType="VARCHAR" property="guid" />
+    <result column="depart_id" jdbcType="VARCHAR" property="departId" />
+    <result column="depart_code" jdbcType="VARCHAR" property="departCode" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="leader_flag" jdbcType="VARCHAR" property="leaderFlag" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="modi_date" jdbcType="TIMESTAMP" property="modiDate" />
+    <result column="modi_person" jdbcType="VARCHAR" property="modiPerson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    guid, depart_id, depart_code, user_id, user_code, leader_flag, comments, create_date, 
+    create_person, modi_date, modi_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_org_depart_user
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_org_depart_user
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.TOrgDepartUser">
+    insert into t_org_depart_user (guid, depart_id, depart_code, 
+      user_id, user_code, leader_flag, 
+      comments, create_date, create_person, 
+      modi_date, modi_person)
+    values (#{guid,jdbcType=VARCHAR}, #{departId,jdbcType=VARCHAR}, #{departCode,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{leaderFlag,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, 
+      #{modiDate,jdbcType=TIMESTAMP}, #{modiPerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.TOrgDepartUser">
+    insert into t_org_depart_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        guid,
+      </if>
+      <if test="departId != null">
+        depart_id,
+      </if>
+      <if test="departCode != null">
+        depart_code,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="leaderFlag != null">
+        leader_flag,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="modiDate != null">
+        modi_date,
+      </if>
+      <if test="modiPerson != null">
+        modi_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="departId != null">
+        #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="departCode != null">
+        #{departCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFlag != null">
+        #{leaderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modiDate != null">
+        #{modiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiPerson != null">
+        #{modiPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.TOrgDepartUser">
+    update t_org_depart_user
+    <set>
+      <if test="departId != null">
+        depart_id = #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="departCode != null">
+        depart_code = #{departCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFlag != null">
+        leader_flag = #{leaderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modiDate != null">
+        modi_date = #{modiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiPerson != null">
+        modi_person = #{modiPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.TOrgDepartUser">
+    update t_org_depart_user
+    set depart_id = #{departId,jdbcType=VARCHAR},
+      depart_code = #{departCode,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_code = #{userCode,jdbcType=VARCHAR},
+      leader_flag = #{leaderFlag,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      modi_date = #{modiDate,jdbcType=TIMESTAMP},
+      modi_person = #{modiPerson,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.TOrgDepartUser">
+    <id column="guid" jdbcType="VARCHAR" property="guid" />
+    <result column="depart_id" jdbcType="VARCHAR" property="departId" />
+    <result column="depart_code" jdbcType="VARCHAR" property="departCode" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="leader_flag" jdbcType="VARCHAR" property="leaderFlag" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="modi_date" jdbcType="TIMESTAMP" property="modiDate" />
+    <result column="modi_person" jdbcType="VARCHAR" property="modiPerson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    guid, depart_id, depart_code, user_id, user_code, leader_flag, comments, create_date, 
+    create_person, modi_date, modi_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_org_depart_user
+    where guid = #{guid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_org_depart_user
+    where guid = #{guid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.TOrgDepartUser">
+    insert into t_org_depart_user (guid, depart_id, depart_code, 
+      user_id, user_code, leader_flag, 
+      comments, create_date, create_person, 
+      modi_date, modi_person)
+    values (#{guid,jdbcType=VARCHAR}, #{departId,jdbcType=VARCHAR}, #{departCode,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{leaderFlag,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, 
+      #{modiDate,jdbcType=TIMESTAMP}, #{modiPerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.TOrgDepartUser">
+    insert into t_org_depart_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        guid,
+      </if>
+      <if test="departId != null">
+        depart_id,
+      </if>
+      <if test="departCode != null">
+        depart_code,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="leaderFlag != null">
+        leader_flag,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="modiDate != null">
+        modi_date,
+      </if>
+      <if test="modiPerson != null">
+        modi_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="departId != null">
+        #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="departCode != null">
+        #{departCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFlag != null">
+        #{leaderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modiDate != null">
+        #{modiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiPerson != null">
+        #{modiPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.TOrgDepartUser">
+    update t_org_depart_user
+    <set>
+      <if test="departId != null">
+        depart_id = #{departId,jdbcType=VARCHAR},
+      </if>
+      <if test="departCode != null">
+        depart_code = #{departCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFlag != null">
+        leader_flag = #{leaderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modiDate != null">
+        modi_date = #{modiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiPerson != null">
+        modi_person = #{modiPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.TOrgDepartUser">
+    update t_org_depart_user
+    set depart_id = #{departId,jdbcType=VARCHAR},
+      depart_code = #{departCode,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_code = #{userCode,jdbcType=VARCHAR},
+      leader_flag = #{leaderFlag,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      modi_date = #{modiDate,jdbcType=TIMESTAMP},
+      modi_person = #{modiPerson,jdbcType=VARCHAR}
+    where guid = #{guid,jdbcType=VARCHAR}
+  </update>
+</mapper>
